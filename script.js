@@ -5,6 +5,7 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const timeEl = document.querySelector(".time");
+const scoreEl = document.querySelector("#score")
 
 
 let secondsLeft = 60;
@@ -46,20 +47,20 @@ let myQuestions = [
   {
     question: "Which tool can you use to ensure code quality?",
     answers: [
-       "Angular",
-       "jQuery",
-       "RequireJS",
-       "ESLint"
+      "Angular",
+      "jQuery",
+      "RequireJS",
+      "ESLint"
     ],
     correctAnswer: "Angular"
   },
   {
     question: "Which tool can you use to ensure code quality?",
     answers: [
-       "Angular",
-       "jQuery",
-       "RequireJS",
-       "ESLint"
+      "Angular",
+      "jQuery",
+      "RequireJS",
+      "ESLint"
     ],
     correctAnswer: "Angular"
   }
@@ -69,16 +70,22 @@ let myQuestions = [
 
 let index = 0;
 let currentQuestion = myQuestions[index];
+questionEl.textContent = currentQuestion.question;
+button1.textContent = currentQuestion.answers[0];
+button2.textContent = currentQuestion.answers[1];
+button3.textContent = currentQuestion.answers[2];
+button4.textContent = currentQuestion.answers[3];
+
 nextQuestion();
 
 function nextQuestion() {
   currentQuestion = myQuestions[index];
-  questionEl.textContent = myQuestions.question;
-  button1.textContent = myQuestions.answers[0];
-  button2.textContent = myQuestions.answers[1];
-  button3.textContent = myQuestions.answers[2];
-  button4.textContent = myQuestions.answers[3];
-  
+  questionEl.textContent = currentQuestion.question;
+  button1.textContent = currentQuestion.answers[0];
+  button2.textContent = currentQuestion.answers[1];
+  button3.textContent = currentQuestion.answers[2];
+  button4.textContent = currentQuestion.answers[3];
+
 }
 
 button1.addEventListener("click", function (event) {
@@ -133,8 +140,13 @@ button4.addEventListener("click", function (event) {
 
 })
 
+let currentScore = 0
 
-function renderQuestion() {
-
+function setScore() {
+  currentScore = secondsLeft
+  scoreEl.textContent = seconds"Score: " + secondsLeft;
 }
+
+
+
 
