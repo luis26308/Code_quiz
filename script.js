@@ -5,7 +5,7 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const timeEl = document.querySelector(".time");
-const scoreEl = document.querySelector("#score");
+
 
 
 let secondsLeft = 60;
@@ -19,10 +19,12 @@ function setTime() {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       alert("You are out of time")
+      prompt("Enter your initials")
     }
 
   }, 1000);
 }
+
 
 let myQuestions = [
   {
@@ -30,7 +32,7 @@ let myQuestions = [
     answers: ["Douglas Crockford",
       "Sheryl Sandberg",
       "Brendan Eich",
-      "something"
+      "Brad Pitt"
     ],
     correctAnswer: "Sheryl Sandberg"
   },
@@ -40,7 +42,7 @@ let myQuestions = [
       "Node.js",
       "TypeScript",
       "npm",
-      "something"
+      "Amazon"
     ],
     correctAnswer: "Node.js"
   },
@@ -55,20 +57,31 @@ let myQuestions = [
     correctAnswer: "Angular"
   },
   {
-    question: "Which tool can you use to ensure code quality?",
+    question: "Which of the following is not a valid JavaScript variable name?",
     answers: [
-      "Angular",
-      "jQuery",
-      "RequireJS",
-      "ESLint"
+      "2names",
+      "_first_and_last_names",
+      "FirstAndLast",
+      "None of the above"
     ],
-    correctAnswer: "Angular"
+    correctAnswer: "2names"
+  },
+  {
+    question: "JavaScript entities start with _______ and end with _________.",
+    answers: [
+      "Semicolon, colon",
+      "Semicolon, Ampersand",
+      "Ampersand, colon",
+      "Ampersand, semicolon"
+    ],
+    correctAnswer: "Ampersand, semicolon"
   }
 ]
 
 
 
 let index = 0;
+let score = 0;
 let currentQuestion = myQuestions[index];
 questionEl.textContent = currentQuestion.question;
 button1.textContent = currentQuestion.answers[0];
@@ -79,18 +92,26 @@ button4.textContent = currentQuestion.answers[3];
 nextQuestion();
 
 function nextQuestion() {
-  currentQuestion = myQuestions[index];
-  questionEl.textContent = currentQuestion.question;
-  button1.textContent = currentQuestion.answers[0];
-  button2.textContent = currentQuestion.answers[1];
-  button3.textContent = currentQuestion.answers[2];
-  button4.textContent = currentQuestion.answers[3];
 
+  if (index === 4) {
+    console.log(alert("Your score is: " + secondsLeft))
+    console.log(prompt("Enter your initials")
+
+  }
+
+  else {
+    currentQuestion = myQuestions[index];
+    questionEl.textContent = currentQuestion.question;
+    button1.textContent = currentQuestion.answers[0];
+    button2.textContent = currentQuestion.answers[1];
+    button3.textContent = currentQuestion.answers[2];
+    button4.textContent = currentQuestion.answers[3];
+  }
 }
 
 button1.addEventListener("click", function (event) {
   event.preventDefault();
-  if (button1.textContent === myQuestions.correctAnswer) {
+  if (button1.textContent === currentQuestion.correctAnswer) {
     alert("correct");
   }
   else {
@@ -103,7 +124,7 @@ button1.addEventListener("click", function (event) {
 
 button2.addEventListener("click", function (event) {
   event.preventDefault();
-  if (button2.textContent === myQuestions.correctAnswer) {
+  if (button2.textContent === currentQuestion.correctAnswer) {
     alert("correct");
   }
   else {
@@ -116,7 +137,7 @@ button2.addEventListener("click", function (event) {
 
 button3.addEventListener("click", function (event) {
   event.preventDefault();
-  if (button3.textContent === myQuestions.correctAnswer) {
+  if (button3.textContent === currentQuestion.correctAnswer) {
     alert("correct");
   }
   else {
@@ -129,7 +150,7 @@ button3.addEventListener("click", function (event) {
 
 button4.addEventListener("click", function (event) {
   event.preventDefault();
-  if (button4.textContent === myQuestions.correctAnswer) {
+  if (button4.textContent === currentQuestion.correctAnswer) {
     alert("correct");
   }
   else {
@@ -139,6 +160,9 @@ button4.addEventListener("click", function (event) {
   nextQuestion();
 
 })
+
+
+
 
 
 
