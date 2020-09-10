@@ -5,7 +5,7 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const timeEl = document.querySelector(".time");
-const scoreEl = document.querySelector("#score")
+const scoreEl = document.querySelector("#score");
 
 
 let secondsLeft = 60;
@@ -140,12 +140,7 @@ button4.addEventListener("click", function (event) {
 
 })
 
-let currentScore = 0
 
-function setScore() {
-  currentScore = secondsLeft
-  scoreEl.textContent = seconds"Score: " + secondsLeft;
-}
 
 
 
