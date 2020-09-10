@@ -16,10 +16,10 @@ function setTime() {
     secondsLeft--;
     timeEl.textContent = "Time left: " + secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft === 0 || index === 4) {
       clearInterval(timerInterval);
-      alert("You are out of time")
-      prompt("Enter your initials")
+      console.log(alert("Your score is: " + secondsLeft))
+      console.log(prompt("Enter your initials"))
     }
 
   }, 1000);
@@ -81,7 +81,6 @@ let myQuestions = [
 
 
 let index = 0;
-let score = 0;
 let currentQuestion = myQuestions[index];
 questionEl.textContent = currentQuestion.question;
 button1.textContent = currentQuestion.answers[0];
@@ -92,21 +91,12 @@ button4.textContent = currentQuestion.answers[3];
 nextQuestion();
 
 function nextQuestion() {
-
-  if (index === 4) {
-    console.log(alert("Your score is: " + secondsLeft))
-    console.log(prompt("Enter your initials")
-
-  }
-
-  else {
-    currentQuestion = myQuestions[index];
-    questionEl.textContent = currentQuestion.question;
-    button1.textContent = currentQuestion.answers[0];
-    button2.textContent = currentQuestion.answers[1];
-    button3.textContent = currentQuestion.answers[2];
-    button4.textContent = currentQuestion.answers[3];
-  }
+  currentQuestion = myQuestions[index];
+  questionEl.textContent = currentQuestion.question;
+  button1.textContent = currentQuestion.answers[0];
+  button2.textContent = currentQuestion.answers[1];
+  button3.textContent = currentQuestion.answers[2];
+  button4.textContent = currentQuestion.answers[3];
 }
 
 button1.addEventListener("click", function (event) {
